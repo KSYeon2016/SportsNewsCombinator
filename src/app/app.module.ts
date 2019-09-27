@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NewsComponent } from './dashboard/news/news.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
+import { NewsapiService } from './service/newsapi.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { HeaderComponent } from './core/header/header.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [NewsapiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
