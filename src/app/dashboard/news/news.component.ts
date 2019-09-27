@@ -25,7 +25,7 @@ export class NewsComponent implements OnInit {
 
     this._service.fetchNewsFeed(this.feedType)
     .subscribe(
-      item => this.latest_news = item,
+      items => this.latest_news = items,
       error => {
         this.errorMessage = 'Could not load ' + this.feedType + 'stories.';
         console.log(this.errorMessage);
