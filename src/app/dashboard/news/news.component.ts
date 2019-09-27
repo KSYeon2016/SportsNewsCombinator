@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { News } from '../../../models/news';
 import { NewsapiService } from 'app/service/newsapi.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'snc-news',
@@ -14,9 +15,14 @@ export class NewsComponent implements OnInit {
   feedType: string;
   errorMessage = '';
 
-  constructor(private _service:NewsapiService) { }
+  constructor(private _service:NewsapiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.feedType = (data as any).feedType;
+      this.source = (data as any).source;
+    });
+
     this._service.fetchNewsFeed(this.feedType)
     .subscribe(
       item => this.latest_news = item,
